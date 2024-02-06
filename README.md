@@ -4,9 +4,7 @@ Este repositorio contiene el código fuente de la aplicación Asis Lab. Antes de
 
 ## Configuración de la Base de Datos
 
-En la infraestructura de acceso a datos, se utiliza el archivo `App.Config` para especificar el nombre de la base de datos a la que la aplicación se conectará. Sigue estos pasos para configurar correctamente el archivo `App.Config`:
-
-Los cambios debes hacerlos en las carpetas de **Infraestructura.AccesoDatos** y **UI.Windows**
+Los cambios debes hacerlos en las carpetas de **Infraestructura.AccesoDatos** y **UI.Windows**, se utiliza el archivo `App.Config` para especificar el nombre de la base de datos a la que la aplicación se conectará. Sigue estos pasos para configurar correctamente el archivo `App.Config`:
 
 1. Abre el archivo `App.Config` en un editor de texto o en tu entorno de desarrollo.
 
