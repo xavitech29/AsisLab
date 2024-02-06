@@ -12,5 +12,5 @@ En la infraestructura de acceso a datos, se utiliza el archivo `App.Config` para
 
    ```xml
    <connectionStrings>
-       <add name="NombreConexion" connectionString="Data Source=NombreServidor;Initial Catalog=NombreBaseDatos;User ID=Usuario;Password=Contraseña;" providerName="System.Data.SqlClient" />
-   </connectionStrings>
+		<add name="LABEntities" connectionString="metadata=res://*/Model_LAB.csdl|res://*/Model_LAB.ssdl|res://*/Model_LAB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-VJM26SD\SQLEXPRESS;initial catalog=LAB;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+	</connectionStrings>
