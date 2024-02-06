@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LABModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="departamento_laboratorio">
+          <Key>
+            <PropertyRef Name="id_departamento" />
+          </Key>
+          <Property Name="id_departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_departamento" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="medico">
+          <Key>
+            <PropertyRef Name="id_medico" />
+          </Key>
+          <Property Name="id_medico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="especialidad" Type="nvarchar" MaxLength="100" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="15" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="muestra">
+          <Key>
+            <PropertyRef Name="id_muestra" />
+          </Key>
+          <Property Name="id_muestra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_paciente" Type="int" />
+          <Property Name="id_medico" Type="int" />
+          <Property Name="id_tipo_prueba" Type="int" />
+          <Property Name="id_departamento" Type="int" />
+          <Property Name="fecha_recepcion" Type="datetime" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="paciente">
+          <Key>
+            <PropertyRef Name="id_paciente" />
+          </Key>
+          <Property Name="id_paciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="fecha_nacimiento" Type="date" />
+          <Property Name="genero" Type="nvarchar" MaxLength="10" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tipo_prueba">
+          <Key>
+            <PropertyRef Name="id_tipo_prueba" />
+          </Key>
+          <Property Name="id_tipo_prueba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_tipo_prueba" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__muestra__id_depa__4222D4EF">
+          <End Role="departamento_laboratorio" Type="Self.departamento_laboratorio" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento_laboratorio">
+              <PropertyRef Name="id_departamento" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__muestra__id_medi__403A8C7D">
+          <End Role="medico" Type="Self.medico" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medico">
+              <PropertyRef Name="id_medico" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__muestra__id_paci__3F466844">
+          <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="id_paciente" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__muestra__id_tipo__412EB0B6">
+          <End Role="tipo_prueba" Type="Self.tipo_prueba" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_prueba">
+              <PropertyRef Name="id_tipo_prueba" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_tipo_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LABModelStoreContainer">
+          <EntitySet Name="departamento_laboratorio" EntityType="Self.departamento_laboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="muestra" EntityType="Self.muestra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_prueba" EntityType="Self.tipo_prueba" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__muestra__id_depa__4222D4EF" Association="Self.FK__muestra__id_depa__4222D4EF">
+            <End Role="departamento_laboratorio" EntitySet="departamento_laboratorio" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__muestra__id_medi__403A8C7D" Association="Self.FK__muestra__id_medi__403A8C7D">
+            <End Role="medico" EntitySet="medico" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__muestra__id_paci__3F466844" Association="Self.FK__muestra__id_paci__3F466844">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__muestra__id_tipo__412EB0B6" Association="Self.FK__muestra__id_tipo__412EB0B6">
+            <End Role="tipo_prueba" EntitySet="tipo_prueba" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LABModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="departamento_laboratorio">
+          <Key>
+            <PropertyRef Name="id_departamento" />
+          </Key>
+          <Property Name="id_departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="muestra" Relationship="Self.FK__muestra__id_depa__4222D4EF" FromRole="departamento_laboratorio" ToRole="muestra" />
+        </EntityType>
+        <EntityType Name="medico">
+          <Key>
+            <PropertyRef Name="id_medico" />
+          </Key>
+          <Property Name="id_medico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="muestra" Relationship="Self.FK__muestra__id_medi__403A8C7D" FromRole="medico" ToRole="muestra" />
+        </EntityType>
+        <EntityType Name="muestra">
+          <Key>
+            <PropertyRef Name="id_muestra" />
+          </Key>
+          <Property Name="id_muestra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_paciente" Type="Int32" />
+          <Property Name="id_medico" Type="Int32" />
+          <Property Name="id_tipo_prueba" Type="Int32" />
+          <Property Name="id_departamento" Type="Int32" />
+          <Property Name="fecha_recepcion" Type="DateTime" Precision="3" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="departamento_laboratorio" Relationship="Self.FK__muestra__id_depa__4222D4EF" FromRole="muestra" ToRole="departamento_laboratorio" />
+          <NavigationProperty Name="medico" Relationship="Self.FK__muestra__id_medi__403A8C7D" FromRole="muestra" ToRole="medico" />
+          <NavigationProperty Name="paciente" Relationship="Self.FK__muestra__id_paci__3F466844" FromRole="muestra" ToRole="paciente" />
+          <NavigationProperty Name="tipo_prueba" Relationship="Self.FK__muestra__id_tipo__412EB0B6" FromRole="muestra" ToRole="tipo_prueba" />
+        </EntityType>
+        <EntityType Name="paciente">
+          <Key>
+            <PropertyRef Name="id_paciente" />
+          </Key>
+          <Property Name="id_paciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="genero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="muestra" Relationship="Self.FK__muestra__id_paci__3F466844" FromRole="paciente" ToRole="muestra" />
+        </EntityType>
+        <EntityType Name="tipo_prueba">
+          <Key>
+            <PropertyRef Name="id_tipo_prueba" />
+          </Key>
+          <Property Name="id_tipo_prueba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_tipo_prueba" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="muestra" Relationship="Self.FK__muestra__id_tipo__412EB0B6" FromRole="tipo_prueba" ToRole="muestra" />
+        </EntityType>
+        <Association Name="FK__muestra__id_depa__4222D4EF">
+          <End Role="departamento_laboratorio" Type="Self.departamento_laboratorio" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento_laboratorio">
+              <PropertyRef Name="id_departamento" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__muestra__id_medi__403A8C7D">
+          <End Role="medico" Type="Self.medico" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medico">
+              <PropertyRef Name="id_medico" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__muestra__id_paci__3F466844">
+          <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="id_paciente" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__muestra__id_tipo__412EB0B6">
+          <End Role="tipo_prueba" Type="Self.tipo_prueba" Multiplicity="0..1" />
+          <End Role="muestra" Type="Self.muestra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_prueba">
+              <PropertyRef Name="id_tipo_prueba" />
+            </Principal>
+            <Dependent Role="muestra">
+              <PropertyRef Name="id_tipo_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LABEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="departamento_laboratorio" EntityType="Self.departamento_laboratorio" />
+          <EntitySet Name="medico" EntityType="Self.medico" />
+          <EntitySet Name="muestra" EntityType="Self.muestra" />
+          <EntitySet Name="paciente" EntityType="Self.paciente" />
+          <EntitySet Name="tipo_prueba" EntityType="Self.tipo_prueba" />
+          <AssociationSet Name="FK__muestra__id_depa__4222D4EF" Association="Self.FK__muestra__id_depa__4222D4EF">
+            <End Role="departamento_laboratorio" EntitySet="departamento_laboratorio" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__muestra__id_medi__403A8C7D" Association="Self.FK__muestra__id_medi__403A8C7D">
+            <End Role="medico" EntitySet="medico" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__muestra__id_paci__3F466844" Association="Self.FK__muestra__id_paci__3F466844">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__muestra__id_tipo__412EB0B6" Association="Self.FK__muestra__id_tipo__412EB0B6">
+            <End Role="tipo_prueba" EntitySet="tipo_prueba" />
+            <End Role="muestra" EntitySet="muestra" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LABModelStoreContainer" CdmEntityContainer="LABEntities">
+          <EntitySetMapping Name="departamento_laboratorio">
+            <EntityTypeMapping TypeName="LABModel.departamento_laboratorio">
+              <MappingFragment StoreEntitySet="departamento_laboratorio">
+                <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+                <ScalarProperty Name="nombre_departamento" ColumnName="nombre_departamento" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="medico">
+            <EntityTypeMapping TypeName="LABModel.medico">
+              <MappingFragment StoreEntitySet="medico">
+                <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="muestra">
+            <EntityTypeMapping TypeName="LABModel.muestra">
+              <MappingFragment StoreEntitySet="muestra">
+                <ScalarProperty Name="id_muestra" ColumnName="id_muestra" />
+                <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+                <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+                <ScalarProperty Name="id_tipo_prueba" ColumnName="id_tipo_prueba" />
+                <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+                <ScalarProperty Name="fecha_recepcion" ColumnName="fecha_recepcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paciente">
+            <EntityTypeMapping TypeName="LABModel.paciente">
+              <MappingFragment StoreEntitySet="paciente">
+                <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_prueba">
+            <EntityTypeMapping TypeName="LABModel.tipo_prueba">
+              <MappingFragment StoreEntitySet="tipo_prueba">
+                <ScalarProperty Name="id_tipo_prueba" ColumnName="id_tipo_prueba" />
+                <ScalarProperty Name="nombre_tipo_prueba" ColumnName="nombre_tipo_prueba" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
