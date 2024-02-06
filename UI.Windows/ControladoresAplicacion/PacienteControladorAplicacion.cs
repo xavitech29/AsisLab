@@ -23,7 +23,7 @@ namespace UI.Windows.ControladoresAplicacion
             paciente nuevoPacienteET = new paciente();
             try
             {
-                //nuevoPacienteET.id_paciente = //nuevoPacienteVM.Id_paciente;
+               
                 nuevoPacienteET.nombre = nuevoPacienteVM.Nombre;
                 nuevoPacienteET.apellido = nuevoPacienteVM.Apellido;
                 nuevoPacienteET.fecha_nacimiento = nuevoPacienteVM.Fecha_nacimiento;
@@ -91,17 +91,18 @@ namespace UI.Windows.ControladoresAplicacion
             }
         }
 
-        public bool EliminarPaciente(PacienteVistaModelo nuevoPacienteVM)
-        {
-            paciente paciente = new paciente();
+        public bool EliminarPaciente(PacienteVistaModelo eliminarPacienteVM)
+        {            
             try
             {
 
-                pacienteServices.EliminarPaciente(nuevoPacienteVM.Id_paciente);
+                pacienteServices.EliminarPaciente(eliminarPacienteVM.Id_paciente);
                 return true;
             }
             catch (Exception ex)
             {
+
+                Console.WriteLine(ex.ToString());
                 return false;
             }
         }

@@ -78,6 +78,8 @@ namespace UI.Windows.Formularios
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             InsertarMedico();
+            Limpiar();
+
         }
 
         private void dgvListarMedico_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -91,6 +93,46 @@ namespace UI.Windows.Formularios
                 txtEspecialidadM.Text = dgvListarMedico.CurrentRow.Cells[3].Value.ToString();
                 txtTelefonoM.Text = dgvListarMedico.CurrentRow.Cells[4].Value.ToString();
                 txtEmailM.Text = dgvListarMedico.CurrentRow.Cells[5].Value.ToString();              
+            }
+        }
+
+        private void Limpiar()
+        {
+            txtIdMedico.Text = "";
+            txtNombreM.Text = "";
+            txtApellidoM.Text = "";
+            txtEspecialidadM.Text = "";
+            txtTelefonoM.Text = "";
+            txtEmailM.Text = "";
+        }
+
+        private void EliminarMedico()
+        {
+            medicoVistaModelo = new MedicoVistaModelo();
+            var IdMedico= int.Parse(txtIdMedico.Text == "" ? "0" : txtIdMedico.Text);
+            medicoVistaModelo.Id_medico = IdMedico;
+
+            if (medicoControlador.EliminarMedico(medicoVistaModelo) && IdMedico > 0)
+            {
+                MessageBox.Show("Medico Dado de Baja!!");
+
+                ListarMedicos();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Error.Medico No Dado de Baja!!");
+
+            }
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Está seguro de eliminar este médico?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                EliminarMedico();
+                Limpiar();
             }
         }
     }

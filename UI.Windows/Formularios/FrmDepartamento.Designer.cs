@@ -34,9 +34,10 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.dgvListarDepartamento = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bntGuardarDepartamento = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtIdDepartamento = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bntGuardarDepartamento = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarDepartamento)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.txtIdDepartamento);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.bntGuardarDepartamento);
@@ -97,15 +99,13 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
-            // bntGuardarDepartamento
+            // txtIdDepartamento
             // 
-            this.bntGuardarDepartamento.Location = new System.Drawing.Point(380, 95);
-            this.bntGuardarDepartamento.Name = "bntGuardarDepartamento";
-            this.bntGuardarDepartamento.Size = new System.Drawing.Size(75, 23);
-            this.bntGuardarDepartamento.TabIndex = 4;
-            this.bntGuardarDepartamento.Text = "Guardar";
-            this.bntGuardarDepartamento.UseVisualStyleBackColor = true;
-            this.bntGuardarDepartamento.Click += new System.EventHandler(this.bntGuardarDepartamento_Click);
+            this.txtIdDepartamento.Enabled = false;
+            this.txtIdDepartamento.Location = new System.Drawing.Point(270, 19);
+            this.txtIdDepartamento.Name = "txtIdDepartamento";
+            this.txtIdDepartamento.Size = new System.Drawing.Size(100, 20);
+            this.txtIdDepartamento.TabIndex = 6;
             // 
             // label3
             // 
@@ -116,13 +116,25 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "ID";
             // 
-            // txtIdDepartamento
+            // bntGuardarDepartamento
             // 
-            this.txtIdDepartamento.Enabled = false;
-            this.txtIdDepartamento.Location = new System.Drawing.Point(270, 19);
-            this.txtIdDepartamento.Name = "txtIdDepartamento";
-            this.txtIdDepartamento.Size = new System.Drawing.Size(100, 20);
-            this.txtIdDepartamento.TabIndex = 6;
+            this.bntGuardarDepartamento.Location = new System.Drawing.Point(380, 54);
+            this.bntGuardarDepartamento.Name = "bntGuardarDepartamento";
+            this.bntGuardarDepartamento.Size = new System.Drawing.Size(75, 23);
+            this.bntGuardarDepartamento.TabIndex = 4;
+            this.bntGuardarDepartamento.Text = "Guardar";
+            this.bntGuardarDepartamento.UseVisualStyleBackColor = true;
+            this.bntGuardarDepartamento.Click += new System.EventHandler(this.bntGuardarDepartamento_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(380, 96);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 7;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // FrmDepartamento
             // 
@@ -152,5 +164,6 @@
         private System.Windows.Forms.Button bntGuardarDepartamento;
         private System.Windows.Forms.TextBox txtIdDepartamento;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

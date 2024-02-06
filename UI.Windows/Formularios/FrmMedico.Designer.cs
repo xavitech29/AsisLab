@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtIdMedico = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtEmailM = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -41,14 +44,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombreM = new System.Windows.Forms.TextBox();
             this.dgvListarMedico = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtIdMedico = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarMedico)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.txtIdMedico);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtEmailM);
@@ -67,6 +69,33 @@
             this.groupBox1.Size = new System.Drawing.Size(677, 182);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(441, 72);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 13;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // txtIdMedico
+            // 
+            this.txtIdMedico.Enabled = false;
+            this.txtIdMedico.Location = new System.Drawing.Point(262, 17);
+            this.txtIdMedico.Name = "txtIdMedico";
+            this.txtIdMedico.Size = new System.Drawing.Size(100, 20);
+            this.txtIdMedico.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(238, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "ID";
             // 
             // txtEmailM
             // 
@@ -167,23 +196,6 @@
             this.dgvListarMedico.TabIndex = 1;
             this.dgvListarMedico.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListarMedico_CellMouseDoubleClick);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(238, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "ID";
-            // 
-            // txtIdMedico
-            // 
-            this.txtIdMedico.Enabled = false;
-            this.txtIdMedico.Location = new System.Drawing.Point(262, 17);
-            this.txtIdMedico.Name = "txtIdMedico";
-            this.txtIdMedico.Size = new System.Drawing.Size(100, 20);
-            this.txtIdMedico.TabIndex = 12;
-            // 
             // FrmMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,5 +231,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIdMedico;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

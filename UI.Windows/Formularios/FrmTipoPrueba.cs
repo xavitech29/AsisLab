@@ -28,10 +28,10 @@ namespace UI.Windows.Formularios
             tipoPruebaVistaModelo.Nombre_tipo_prueba = txtNombreTP.Text;
             tipoPruebaVistaModelo.Descripcion = txtDescripcionTP.Text;
 
-            if (txtTipoPrueba.Text.Length > 0)
+            if (txtIdTipoPrueba.Text.Length > 0)
             {
                 int idTipoPrueba;
-                if (!int.TryParse(txtTipoPrueba.Text, out idTipoPrueba))
+                if (!int.TryParse(txtIdTipoPrueba.Text, out idTipoPrueba))
                 {
                     MessageBox.Show("Por favor, ingrese un valor válido para el ID del medico.");
                     return;
@@ -74,6 +74,7 @@ namespace UI.Windows.Formularios
         private void btnGuardarTipo_Click(object sender, EventArgs e)
         {
             InsertarTipoPrueba();
+            Limpiar();
         }
 
         private void dgvListarTipoPrueba_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -81,10 +82,48 @@ namespace UI.Windows.Formularios
             if (dgvListarTipoPrueba.SelectedRows.Count > 0)
             {
 
-                txtTipoPrueba.Text = dgvListarTipoPrueba.CurrentRow.Cells[0].Value.ToString();
+                txtIdTipoPrueba.Text = dgvListarTipoPrueba.CurrentRow.Cells[0].Value.ToString();
                 txtNombreTP.Text = dgvListarTipoPrueba.CurrentRow.Cells[1].Value.ToString();
                 txtDescripcionTP.Text = dgvListarTipoPrueba.CurrentRow.Cells[2].Value.ToString();
 
+            }
+        }
+
+        private void Limpiar()
+        {
+            txtIdTipoPrueba.Text = "";
+            txtNombreTP.Text = "";
+            txtDescripcionTP.Text = "";
+
+        }
+
+        private void EliminarTipoPrueba()
+        {
+            tipoPruebaVistaModelo = new TipoPruebaVistaModelo();
+            var IdTipoPrueba = int.Parse(txtIdTipoPrueba.Text == "" ? "0" : txtIdTipoPrueba.Text);
+            tipoPruebaVistaModelo.Id_tipo_prueba = IdTipoPrueba;
+
+            if (tipoPruebaControlador.EliminarTipoPrueba(tipoPruebaVistaModelo) && IdTipoPrueba > 0)
+            {
+                MessageBox.Show("Tipo Prueba Dado de Baja!!");
+
+                ListarTipoPruebas();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Error. Tipo Prueba No Dado de Baja!!");
+
+            }
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Está seguro de eliminar este Tipo Prueba?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                EliminarTipoPrueba();
+                Limpiar();
             }
         }
     }

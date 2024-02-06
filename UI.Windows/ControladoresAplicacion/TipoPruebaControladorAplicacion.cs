@@ -81,5 +81,20 @@ namespace UI.Windows.ControladoresAplicacion
                 return null;
             }
         }
+
+        public bool EliminarTipoPrueba(TipoPruebaVistaModelo eliminarTPVM)
+        {
+            try
+            {
+
+                tipoPruebaServices.EliminarTipoPrueba(eliminarTPVM.Id_tipo_prueba);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
     }
 }

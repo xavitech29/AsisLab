@@ -89,5 +89,20 @@ namespace UI.Windows.ControladoresAplicacion
                 return null;
             }
         }
+
+        public bool EliminarMedico(MedicoVistaModelo eliminarMedicoVM)
+        {
+            try
+            {
+
+                medicoServices.EliminarMedico(eliminarMedicoVM.Id_medico);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
     }
 }

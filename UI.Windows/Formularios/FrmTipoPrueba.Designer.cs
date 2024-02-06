@@ -30,7 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTipoPrueba = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtIdTipoPrueba = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnGuardarTipo = new System.Windows.Forms.Button();
             this.txtDescripcionTP = new System.Windows.Forms.TextBox();
@@ -52,7 +53,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtTipoPrueba);
+            this.groupBox1.Controls.Add(this.btnEliminar);
+            this.groupBox1.Controls.Add(this.txtIdTipoPrueba);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnGuardarTipo);
             this.groupBox1.Controls.Add(this.txtDescripcionTP);
@@ -65,18 +67,28 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // txtTipoPrueba
+            // btnEliminar
             // 
-            this.txtTipoPrueba.Enabled = false;
-            this.txtTipoPrueba.Location = new System.Drawing.Point(243, 57);
-            this.txtTipoPrueba.Name = "txtTipoPrueba";
-            this.txtTipoPrueba.Size = new System.Drawing.Size(100, 20);
-            this.txtTipoPrueba.TabIndex = 6;
+            this.btnEliminar.Location = new System.Drawing.Point(347, 98);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 7;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // txtIdTipoPrueba
+            // 
+            this.txtIdTipoPrueba.Enabled = false;
+            this.txtIdTipoPrueba.Location = new System.Drawing.Point(242, 13);
+            this.txtIdTipoPrueba.Name = "txtIdTipoPrueba";
+            this.txtIdTipoPrueba.Size = new System.Drawing.Size(100, 20);
+            this.txtIdTipoPrueba.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(219, 60);
+            this.label3.Location = new System.Drawing.Point(218, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 13);
             this.label3.TabIndex = 5;
@@ -84,7 +96,7 @@
             // 
             // btnGuardarTipo
             // 
-            this.btnGuardarTipo.Location = new System.Drawing.Point(280, 18);
+            this.btnGuardarTipo.Location = new System.Drawing.Point(347, 69);
             this.btnGuardarTipo.Name = "btnGuardarTipo";
             this.btnGuardarTipo.Size = new System.Drawing.Size(75, 23);
             this.btnGuardarTipo.TabIndex = 4;
@@ -151,7 +163,8 @@
         private System.Windows.Forms.TextBox txtNombreTP;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvListarTipoPrueba;
-        private System.Windows.Forms.TextBox txtTipoPrueba;
+        private System.Windows.Forms.TextBox txtIdTipoPrueba;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

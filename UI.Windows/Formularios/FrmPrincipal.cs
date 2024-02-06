@@ -12,7 +12,7 @@ namespace UI.Windows.Formularios
 {
     public partial class FrmPrincipal : Form
     {
-        private int childFormNumber = 0;
+        //private int childFormNumber = 0;
 
         public FrmPrincipal()
         {

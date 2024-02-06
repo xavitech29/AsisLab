@@ -112,6 +112,7 @@ namespace UI.Windows.Formularios
         private void btnGuardarMuestra_Click(object sender, EventArgs e)
         {
             InsertarMuestra();
+            Limpiar();
         }
 
         private void dgvListarMuestra_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -136,6 +137,48 @@ namespace UI.Windows.Formularios
                 }
 
                 
+            }
+        }
+
+        private void Limpiar()
+        {
+            txtIdMuestra.Text = "";
+            cboPaciente.SelectedValue = "";
+            cboMedico.SelectedValue = "";
+            cboTipoPrueba.SelectedValue = "";
+            cboDepartamento.SelectedValue = "";
+            dtFechaMuestra.Text = "";
+            chkEstado.Checked = false;
+
+        }
+
+        private void EliminarMuestra()
+        {
+            muestraVistaModelo = new MuestraVistaModelo();
+            var IdMuestra = int.Parse(txtIdMuestra.Text == "" ? "0" : txtIdMuestra.Text);
+            muestraVistaModelo.Id_muestra = IdMuestra;
+
+            if (muestraControlador.EliminarMuestra(muestraVistaModelo) && IdMuestra > 0)
+            {
+                MessageBox.Show("Muestra Dado de Baja!!");
+
+                ListarMuestras();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Error. Muestra No Dado de Baja!!");
+
+            }
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Está seguro de eliminar esta muestra?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                EliminarMuestra();
+                Limpiar();
             }
         }
     }

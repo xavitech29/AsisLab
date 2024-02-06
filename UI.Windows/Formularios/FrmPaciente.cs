@@ -117,7 +117,7 @@ namespace UI.Windows.Formularios
             txtTelefonoPaciente.Text = "";
         }
 
-        //eliminar 
+        //Metodo Eliminar 
         private void EliminarPaciente()
         {
             pacienteVistaModelo = new PacienteVistaModelo();

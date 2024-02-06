@@ -92,5 +92,20 @@ namespace UI.Windows.ControladoresAplicacion
                 return null;
             }
         }
+
+        public bool EliminarMuestra(MuestraVistaModelo eliminarMuestraVM)
+        {
+            try
+            {
+
+                muestraServices.EliminarMuestra(eliminarMuestraVM.Id_muestra);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
     }
 }

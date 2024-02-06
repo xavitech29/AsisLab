@@ -81,5 +81,20 @@ namespace UI.Windows.ControladoresAplicacion
                 return null;
             }
         }
+
+        public bool EliminarDepartamento(DepartamentoVistaModelo eliminarDepartamentoVM)
+        {
+            try
+            {
+
+                departamentoServices.EliminarDepartamento(eliminarDepartamentoVM.Id_departamento);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
     }
 }

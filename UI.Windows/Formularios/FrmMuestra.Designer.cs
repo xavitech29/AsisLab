@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtIdMuestra = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,14 +44,14 @@
             this.cboPaciente = new System.Windows.Forms.ComboBox();
             this.btnGuardarMuestra = new System.Windows.Forms.Button();
             this.dgvListarMuestra = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtIdMuestra = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarMuestra)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.txtIdMuestra);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -69,6 +71,23 @@
             this.groupBox1.Size = new System.Drawing.Size(655, 252);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtIdMuestra
+            // 
+            this.txtIdMuestra.Enabled = false;
+            this.txtIdMuestra.Location = new System.Drawing.Point(303, 43);
+            this.txtIdMuestra.Name = "txtIdMuestra";
+            this.txtIdMuestra.Size = new System.Drawing.Size(100, 20);
+            this.txtIdMuestra.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(300, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "ID";
             // 
             // label5
             // 
@@ -185,22 +204,15 @@
             this.dgvListarMuestra.TabIndex = 1;
             this.dgvListarMuestra.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListarMuestra_CellMouseDoubleClick);
             // 
-            // label6
+            // btnEliminar
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(300, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "ID";
-            // 
-            // txtIdMuestra
-            // 
-            this.txtIdMuestra.Enabled = false;
-            this.txtIdMuestra.Location = new System.Drawing.Point(303, 43);
-            this.txtIdMuestra.Name = "txtIdMuestra";
-            this.txtIdMuestra.Size = new System.Drawing.Size(100, 20);
-            this.txtIdMuestra.TabIndex = 13;
+            this.btnEliminar.Location = new System.Drawing.Point(521, 84);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 14;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // FrmMuestra
             // 
@@ -238,5 +250,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtIdMuestra;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

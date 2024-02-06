@@ -74,6 +74,7 @@ namespace UI.Windows.Formularios
         private void bntGuardarDepartamento_Click(object sender, EventArgs e)
         {
             InsertarDepartamento();
+            Limpiar();
         }
 
         private void dgvListarDepartamento_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -85,6 +86,45 @@ namespace UI.Windows.Formularios
                 txtNomDepartamento.Text = dgvListarDepartamento.CurrentRow.Cells[1].Value.ToString();
                 txtDescripcion.Text = dgvListarDepartamento.CurrentRow.Cells[2].Value.ToString();
                 
+            }
+        }
+
+        private void Limpiar()
+        {
+            txtIdDepartamento.Text = "";
+            txtNomDepartamento.Text = "";
+            txtDescripcion.Text = "";
+            
+        }
+        
+        private void EliminarDepartamento()
+        {
+            departamentoVistaModelo = new DepartamentoVistaModelo();
+            var IdDepartamento = int.Parse(txtIdDepartamento.Text == "" ? "0" : txtIdDepartamento.Text);
+            departamentoVistaModelo.Id_departamento = IdDepartamento;
+
+            if (departamentoControlador.EliminarDepartamento(departamentoVistaModelo) && IdDepartamento > 0)
+            {
+                MessageBox.Show("Departamento Dado de Baja!!");
+
+                ListarDepartamentos();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Error. Departamento No Dado de Baja!!");
+
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Está seguro de eliminar este departamento?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                EliminarDepartamento();
+                Limpiar();
             }
         }
     }

@@ -31,7 +31,7 @@ namespace Aplicacion.Servicios
             return departamentoRepository.GetAll();
         }
         //DELETE PARA FINES EDUCATIVO
-        public void EliminarPaciente(int id)
+        public void EliminarDepartamento(int id)
         {
             departamentoRepository.Delete(id);
         }
