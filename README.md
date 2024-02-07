@@ -17,3 +17,5 @@ Los cambios debes hacerlos en las carpetas de **Infraestructura.AccesoDatos** y 
 3. Dirigete a la sección **Dominion.Modelo** luego a **Entidades** y busca el archivo en este caso es **Model_AsisLAB.tt**, abre ese archivo y dirigete a la siguiente linea que tendra un formato similiar al siguiente:
    ```xml
    const string inputFile = @"C:\Users\XAVIER29-PC\Desktop\DS1_UISRAEL\Examen_JamilLicuy\AsisLAB\AsisLAB\Infraestructura.AccesoDatos\Model_AsisLAB.edmx";
+
+4. Se tiene que reemplazar toda esta ruta: **C:\Users\XAVIER29-PC\Desktop\DS1_UISRAEL\Examen_JamilLicuy\AsisLAB\AsisLAB\Infraestructura.AccesoDatos**, por la ruta en donde se ubica el proyecto.
