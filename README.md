@@ -15,5 +15,5 @@ Los cambios debes hacerlos en las carpetas de **Infraestructura.AccesoDatos** y 
 		<add name="LABEntities" connectionString="metadata=res://*/Model_LAB.csdl|res://*/Model_LAB.ssdl|res://*/Model_LAB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-VJM26SD\SQLEXPRESS;initial catalog=LAB;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
 	</connectionStrings>
 3. Dirigete a la sección **Dominion.Modelo** luego a **Entidades** y busca el archivo en este caso es **Model_AsisLAB.tt**, abre ese archivo y dirigete a la siguiente linea que tendra un formato similiar al siguiente:
-4. 
-5. ```const string inputFile = @"C:\Users\XAVIER29-PC\Desktop\DS1_UISRAEL\Examen_JamilLicuy\AsisLAB\AsisLAB\Infraestructura.AccesoDatos\Model_AsisLAB.edmx";
+   ```xml
+   const string inputFile = @"C:\Users\XAVIER29-PC\Desktop\DS1_UISRAEL\Examen_JamilLicuy\AsisLAB\AsisLAB\Infraestructura.AccesoDatos\Model_AsisLAB.edmx";
